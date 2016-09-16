@@ -1,0 +1,16 @@
+{
+  "name": "NBAionic2App",
+  "app_id": "",
+  "v2": true,
+  "typescript": true,
+  "proxies": [
+    {
+      "path": "/dataProxy",
+      "proxyUrl": "http://data.nba.com/"
+    },
+    {
+      "path": "/statsProxy",
+      "proxyUrl": "http://stats.nba.com/"
+    }
+  ]
+}

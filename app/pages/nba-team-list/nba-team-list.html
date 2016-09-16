@@ -1,0 +1,29 @@
+<ion-header>
+    <ion-navbar>
+        <button menuToggle>
+            <ion-icon name="menu"></ion-icon>
+        </button>
+        <ion-title>NBA Team List</ion-title>
+    </ion-navbar>
+</ion-header>
+
+<ion-content>
+    <ion-refresher (ionRefresh) = "doRefresh($event)">
+        <ion-refresher-content 
+            pullingIcon="arrow-dropdown"
+            pullingText="Pull to refresh"
+            refreshingSpinner="bubbles"
+            refreshingText="Refreshing...">
+        </ion-refresher-content>
+    </ion-refresher>
+    <ion-list>
+        <button ion-item *ngFor = "let NBATeam of NBATeamItem">
+            <ion-avatar item-left>
+                <img src = {{NBATeam.imgUrl}}>
+            </ion-avatar>
+            <div item-right>
+                {{NBATeam.Team}}
+            </div>
+        </button>
+    </ion-list>
+</ion-content>
