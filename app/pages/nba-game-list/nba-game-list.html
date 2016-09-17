@@ -1,0 +1,51 @@
+<ion-header>
+    <ion-navbar primary>
+        <button menuToggle>
+            <ion-icon name="menu"></ion-icon>
+        </button>
+        <ion-title>
+            <p class="gameDate">Game List: {{gameDate}}</p>
+            <p class="gameCount">{{gameCount}} Games</p>
+            <div class="button-right">
+                <button flickrpink fab fab-top fab-right (click)="OpenDatePicker()">
+                    <ion-icon name="calendar"></ion-icon>                    
+                </button>          
+            </div>            
+        </ion-title>                      
+    </ion-navbar>
+</ion-header>
+
+<ion-content>
+    <ion-refresher (ionRefresh) = "doRefresh($event)">
+        <ion-refresher-content 
+            pullingIcon="arrow-dropdown"
+            pullingText="Pull to refresh"
+            refreshingSpinner="bubbles"
+            refreshingText="Refreshing...">
+        </ion-refresher-content>
+    </ion-refresher>    
+    <ion-card *ngFor = "let NBAgamelist of NBAGameList" [style.background] = "NBAgamelist.HomeTeamColor">        
+        <button ion-item [style.background] = "NBAgamelist.HomeTeamColor">
+            <div item-left class="center">
+                <ion-thumbnail>
+                    <img src="{{NBAgamelist.HomeTeamLogo}}" class="teamLogo">
+                </ion-thumbnail>
+                <p class="teamCity">{{NBAgamelist.HomeTeamCity}}</p>
+                <h2 class="teamName">{{NBAgamelist.HomeTeamName}}</h2>    
+            </div>
+
+            <div class="center">
+                <p class="infoDivider">{{NBAgamelist.GameProcess}}</p>
+                <p class="infoScore">{{NBAgamelist.HomeScore}} | {{NBAgamelist.VisitorScore}}</p>                      
+            </div>
+
+            <div item-right class="center">
+                <ion-thumbnail>
+                    <img src="{{NBAgamelist.VisitorTeamLogo}}" class="teamLogo">
+                </ion-thumbnail>
+                <p class="teamCity">{{NBAgamelist.VisitorTeamCity}}</p>
+                <h2 class="teamName">{{NBAgamelist.VisitorTeamName}}</h2>     
+            </div>
+        </button>                    
+    </ion-card>    
+</ion-content>

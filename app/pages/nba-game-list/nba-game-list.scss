@@ -1,0 +1,41 @@
+$write-color: #fff;
+
+.center {
+    text-align: center;
+}
+.button-right {
+  display: block !important;
+  width: 100% !important;
+  text-align: right !important;
+}
+.gameDate {
+    color: $write-color;
+    font-weight: 200;
+    font-size: 100%;
+}
+.gameCount {
+    color: $write-color;
+    font-weight: 200;
+    font-size: 70%;
+}
+.teamLogo {
+    width: 95%;
+    height: 95%;      
+}
+.teamCity {
+    color: $write-color !important;    
+}
+.teamName {
+    color: $write-color !important;
+    font-weight: bold !important;    
+}
+.infoDivider {
+    background-color: rgba(255, 255, 255, 0.3);
+    color: $write-color !important;
+    font-size: 90% !important;
+    text-align: center;     
+}
+.infoScore {
+    color: $write-color !important;    
+    font-size: 180% !important;    
+}

@@ -30,8 +30,8 @@ export class NBADataAddress {
      * @Example: GameDate => 20151125 
      */
     GameGeneral(GameDate: string): Promise<any> {        
-        //let GameGeneralUrl = 'http://data.nba.com/data/5s/json/cms/noseason/scoreboard/' + GameDate + '/games.json';
-        let GameGeneralUrl = 'dataProxy/data/5s/json/cms/noseason/scoreboard/' + GameDate + '/games.json';
+        let GameGeneralUrl = 'http://data.nba.com/data/5s/json/cms/noseason/scoreboard/' + GameDate + '/games.json';
+        //let GameGeneralUrl = 'dataProxy/data/5s/json/cms/noseason/scoreboard/' + GameDate + '/games.json';
         return this.http.get(GameGeneralUrl).toPromise().then(response => response.json()).catch(this.handleError);
     }
     /**@Param: GameDate, GameID

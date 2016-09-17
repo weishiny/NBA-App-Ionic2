@@ -16,7 +16,7 @@ export class NBADataServices {
      */
     GetGameGeneral(GameDate: string): Promise<any> {
         return this.NBAdataaddress.GameGeneral(GameDate)
-                   .then(OriginalData => {
+                   .then(OriginalData => {                       
                        console.log('**NBA Data Services: Original NBA GameGeneral Data**');
                        console.log(OriginalData);                               
                        /* Logic for Parsed Data */
@@ -28,7 +28,7 @@ export class NBADataServices {
                        let gameArray: any[] = OriginalData['sports_content']['games']['game'];
                        gameArray.forEach((EachGame, index) => {
                            item = {
-                               ID: EachGame.id,
+                               gameID: EachGame.id,
                                home: {},
                                visitor: {},
                                Detail: { Loaded: false, Data: {} }

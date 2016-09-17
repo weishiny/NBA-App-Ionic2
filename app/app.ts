@@ -30,7 +30,7 @@ class MyApp {
     this.pages = [
       { title: 'Hello Ionic', component: HelloIonicPage, icon: 'information-circle' },
       { title: 'My First List', component: ListPage, icon: 'calendar' },
-      { title: 'NBA Pages', component: TabsPage, index: 2, icon: 'analytics' }
+      { title: 'NBA Pages', component: TabsPage, index: 0, icon: 'analytics' }
     ];
   }
 
