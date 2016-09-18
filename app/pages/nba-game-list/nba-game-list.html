@@ -1,15 +1,13 @@
 <ion-header>
-    <ion-navbar primary>
+    <ion-navbar gameheader>
         <button menuToggle>
             <ion-icon name="menu"></ion-icon>
         </button>
         <ion-title>
             <p class="gameDate">Game List: {{gameDate}}</p>
             <p class="gameCount">{{gameCount}} Games</p>
-            <div class="button-right">
-                <button flickrpink fab fab-top fab-right (click)="OpenDatePicker()">
-                    <ion-icon name="calendar"></ion-icon>                    
-                </button>          
+            <div class="button-right">                
+                <ion-icon name="calendar" (click)="OpenDatePicker()"></ion-icon>                                              
             </div>            
         </ion-title>                      
     </ion-navbar>

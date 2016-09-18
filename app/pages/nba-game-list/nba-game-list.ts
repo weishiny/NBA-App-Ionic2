@@ -16,7 +16,7 @@ export class NBAGameListPage implements OnInit{
     gameDate: string;        
     ChangedDate: string;
 
-    constructor(private NBAteammap: NBATeamMap, private NBAdataservices: NBADataServices, private alertCtrl: AlertController) {
+    constructor(private NBAteammap: NBATeamMap, private NBAdataservices: NBADataServices, private GamealertCtrl: AlertController) {
         this.NBATeamMapData = NBAteammap.getNBATeamArrayData();                       
     }
 
@@ -142,8 +142,8 @@ export class NBAGameListPage implements OnInit{
                         let VisitorTeamCity: string = VisitorMatchAbbrArray[0]['City'];
                         let HomeTeamName: string = HomeMatchAbbrArray[0]['Team'];
                         let VisitorTeamName: string = VisitorMatchAbbrArray[0]['Team'];
-                        let HomeTeamLogo: string = HomeMatchAbbrArray[0]['imgUrl'];
-                        let VisitorTeamLogo: string = VisitorMatchAbbrArray[0]['imgUrl'];
+                        let HomeTeamLogo: string = HomeMatchAbbrArray[0]['imgGameUrl'];
+                        let VisitorTeamLogo: string = VisitorMatchAbbrArray[0]['imgGameUrl'];
                         
                         //Finally, we create an array contains all information we want to show in html, and use this array 
                         //as the datasource of ion-card, which use *ngFor to produce game list.
@@ -163,7 +163,7 @@ export class NBAGameListPage implements OnInit{
                 }
                 else {
                     this.gameCount = 0;
-                    let alert = this.alertCtrl.create({
+                    let alert = this.GamealertCtrl.create({
                         title: 'Oops!',
                         subTitle: 'There are not any game today or the day you select.',
                         buttons: ['OK']

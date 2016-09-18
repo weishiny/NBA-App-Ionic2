@@ -46,8 +46,8 @@ export class NBADataAddress {
      * @Example: Year => 2015
      */
     LeagueStanding(Year: string): Promise<any> {
-        //let LeagueStandingUrl = 'http://data.nba.com/data/json/cms/' + Year + '/league/standings.json';
-        let LeagueStandingUrl = 'dataProxy/data/json/cms/' + Year + '/league/standings.json';
+        let LeagueStandingUrl = 'http://data.nba.com/data/json/cms/' + Year + '/league/standings.json';
+        //let LeagueStandingUrl = 'dataProxy/data/json/cms/' + Year + '/league/standings.json';
         return this.http.get(LeagueStandingUrl).toPromise().then(response => response.json()).catch(this.handleError);
     }
     /**@Param: Season

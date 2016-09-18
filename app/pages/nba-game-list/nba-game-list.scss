@@ -4,9 +4,11 @@ $write-color: #fff;
     text-align: center;
 }
 .button-right {
-  display: block !important;
-  width: 100% !important;
-  text-align: right !important;
+    position: absolute !important;
+    top: 7px !important;
+    right: 5px !important;
+    max-width: 60px !important;
+    max-height: 60px !important;
 }
 .gameDate {
     color: $write-color;

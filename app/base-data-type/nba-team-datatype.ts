@@ -6,5 +6,6 @@ export class NBATeamDataType {
     Team: string;
     Abbreviation: string;
     Color: string;
-    imgUrl: string;
+    imgGameUrl: string;
+    imgTeamUrl: string;
 }

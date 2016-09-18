@@ -1,0 +1,37 @@
+$write-color: #fff;
+
+.teamTitle {
+    color: $write-color;
+    font-weight: 200;
+    font-size: 100%;
+}
+.teamYear {
+    color: $write-color;
+    font-weight: 200;
+    font-size: 70%;
+}
+.right-image {
+    position: absolute !important;
+    top: 7px !important;
+    right: 5px !important;
+    max-width: 60px !important;
+    max-height: 60px !important;        
+}
+.teamCityTitle {
+    font-size: 120% !important;
+    font-weight: bold !important;
+}
+.avartarHeight {
+    min-height: 10% !important; //used for ion item's height, to overwrite ion-avartar's min-height which affect item's height    
+}
+.divTeamCN {        
+    margin-top: -35px;
+    margin-left: 30px;    
+}
+.divTeamWL {        
+    margin-top: -40px;
+    margin-left: 220px;   
+}
+.WinLoss {
+    font-weight: bold;
+}

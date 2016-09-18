@@ -1,29 +1,72 @@
 <ion-header>
-    <ion-navbar>
+    <ion-navbar teamheader>
         <button menuToggle>
             <ion-icon name="menu"></ion-icon>
         </button>
-        <ion-title>NBA Team List</ion-title>
+        <ion-title>
+            <p class="teamTitle">{{ConferenceTitle}} Conference</p>
+            <p class="teamYear">{{TeamYear}}</p>            
+            <div>
+                <ion-icon name="calendar" class="right-image"></ion-icon>
+                <ion-datetime displayFormat="" pickerFormat="YYYY" [(ngModel)]="TeamYear" (ionChange) = "onDateChange()" class="right-image"></ion-datetime>
+            </div>                                                                 
+        </ion-title>
     </ion-navbar>
 </ion-header>
 
-<ion-content>
-    <ion-refresher (ionRefresh) = "doRefresh($event)">
-        <ion-refresher-content 
-            pullingIcon="arrow-dropdown"
-            pullingText="Pull to refresh"
-            refreshingSpinner="bubbles"
-            refreshingText="Refreshing...">
-        </ion-refresher-content>
-    </ion-refresher>
-    <ion-list>
-        <button ion-item *ngFor = "let NBATeam of NBATeamItem">
-            <ion-avatar item-left>
-                <img src = {{NBATeam.imgUrl}}>
-            </ion-avatar>
-            <div item-right>
-                {{NBATeam.Team}}
-            </div>
-        </button>
-    </ion-list>
+<ion-content>        
+    <ion-slides (ionDidChange)="onSlideChanged()">        
+        <ion-slide>
+            <scroll-content>            
+                <ion-list>        
+                    <button ion-item *ngFor = "let NBAWestTeam of NBAWestTeamItem">                    
+                        <div>  
+                            <div item-left>
+                                <p>{{NBAWestTeam.WestTeamStanding}}</p>
+                            </div>
+                            <div class="divTeamCN">                                
+                                <h2 class="teamCityTitle">{{NBAWestTeam.WestTeamCity}}</h2>
+                                <p>{{NBAWestTeam.WestTeamName}}</p>
+                            </div>                                                      
+                            <div class="divTeamWL">
+                                <p class="WinLoss">{{NBAWestTeam.WestTeamWin}} - {{NBAWestTeam.WestTeamLoss}}</p>
+                                <p>{{NBAWestTeam.WestTeamPCT}}</p>
+                            </div>
+                            <div item-right>
+                                <ion-avatar class="avartarHeight">
+                                    <img src="{{NBAWestTeam.WestTeamLogo}}" class="right-image">
+                                </ion-avatar>                     
+                            </div>                                                                                           
+                        </div>                                                                                 
+                    </button>
+                </ion-list>
+            </scroll-content>                        
+        </ion-slide>
+        <ion-slide>
+            <scroll-content>                        
+                <ion-list>        
+                    <button ion-item *ngFor = "let NBAEastTeam of NBAEastTeamItem">                    
+                        <div>
+                            <div item-left>
+                                <p>{{NBAEastTeam.EastTeamStanding}}</p>
+                            </div>
+                            <div class="divTeamCN">                                
+                                <h2 class="teamCityTitle">{{NBAEastTeam.EastTeamCity}}</h2>
+                                <p>{{NBAEastTeam.EastTeamName}}</p>
+                            </div>                                                      
+                            <div class="divTeamWL">
+                                <p class="WinLoss">{{NBAEastTeam.EastTeamWin}} - {{NBAEastTeam.EastTeamLoss}}</p>
+                                <p>{{NBAEastTeam.EastTeamPCT}}</p>
+                            </div>
+                            <div item-right>
+                                <ion-avatar class="avartarHeight">
+                                    <img src="{{NBAEastTeam.EastTeamLogo}}" class="right-image">
+                                </ion-avatar>                     
+                            </div>                                                                                           
+                        </div>                                                                           
+                    </button>
+                </ion-list>
+            </scroll-content>                        
+        </ion-slide>                    
+    </ion-slides>    
 </ion-content>
