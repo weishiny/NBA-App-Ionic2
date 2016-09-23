@@ -1,0 +1,62 @@
+$write-color: #fff;
+.gameDetailicon {
+    margin-top: 12px;
+    color: $write-color;
+}
+.gameDetail {
+    margin-top: -25px;
+    text-align: center;
+    color: $write-color;
+    font-weight: bold;
+    font-size: 100%;
+}
+.gamecenter {
+    text-align: center;
+}
+.gameteamLogo {
+    width: 95%;
+    height: 95%;      
+}
+.gameteamCity {
+    color: $write-color !important;    
+}
+.gameteamStanding {
+    color: $write-color !important;    
+}
+.gameteamName {
+    color: $write-color !important;
+    font-weight: bold !important;    
+}
+.gameinfoDivider {
+    background-color: rgba(255, 255, 255, 0.3);
+    color: $write-color !important;
+    font-size: 90% !important;
+    text-align: center;     
+}
+.gameinfoScore {
+    color: $write-color !important;    
+    font-size: 130% !important;    
+}
+.titleCol {
+    text-align: center;
+    border-bottom-color: #c2c2c2;
+    border-bottom-width: 1px;
+    border-bottom-style: solid;
+    border-right-color: #c2c2c2;
+    border-right-width: 1px;
+    border-right-style: solid;                
+}
+.titleBox {
+    font-size: 12px;
+    font-weight: bold;
+}
+.dataBox {    
+    color: #222;
+    font-size: 11px;
+}
+ion-scroll {
+    white-space: nowrap;
+    height: 50vh;
+    //We need to set ion-scroll's height, then content inside of ion-scroll can be display
+    //ion-content will generate a scroll-content automatically 
+}

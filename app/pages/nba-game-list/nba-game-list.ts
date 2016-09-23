@@ -1,9 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { Refresher, AlertController } from 'ionic-angular';
+import { Refresher, AlertController, NavController } from 'ionic-angular';
 import { DatePicker } from 'ionic-native';
 import { NBATeamDataType } from '../../base-data-type/nba-team-datatype';
 import { NBATeamMap } from '../../services/nba-team-map/nba-team-map';
 import { NBADataServices } from '../../services/nba-data-services/nba-data-services';
+import { NBAGameDetailPage } from '../nba-game-detail/nba-game-detail';
 
 @Component({
     templateUrl: 'build/pages/nba-game-list/nba-game-list.html'    
@@ -16,7 +17,8 @@ export class NBAGameListPage implements OnInit{
     gameDate: string;        
     ChangedDate: string;
 
-    constructor(private NBAteammap: NBATeamMap, private NBAdataservices: NBADataServices, private GamealertCtrl: AlertController) {
+    constructor(private NBAteammap: NBATeamMap, private NBAdataservices: NBADataServices, 
+                private GamealertCtrl: AlertController, public navCtrl: NavController ) {
         this.NBATeamMapData = NBAteammap.getNBATeamArrayData();                       
     }
 
@@ -47,6 +49,12 @@ export class NBAGameListPage implements OnInit{
             },
             error => console.log('Error occurred while getting date: ', error)
         );
+    }
+
+    GameItemTapped(event, GameItem) {
+        this.navCtrl.push(NBAGameDetailPage, {
+            GameItem: GameItem
+        });
     }
 
     /**
@@ -110,7 +118,11 @@ export class NBAGameListPage implements OnInit{
                     let totalArray: any[] = unstartArray.concat(liveArray, overArray);
 
                     totalArray.forEach(EachGameitem => {
+                        let GameID: string = EachGameitem['gameID'];
+                        let GameDate: string = EachGameitem['gameDate'];
+                        let HomeTeamID: string = EachGameitem['home']['TeamID'];                        
                         let HomeAbbr: string = EachGameitem['home']['TeamAbbr'];
+                        let VisitorTeamID: string = EachGameitem['visitor']['TeamID'];
                         let VisitorAbbr: string = EachGameitem['visitor']['TeamAbbr'];
                         
                         let GameProcess: string;
@@ -148,8 +160,12 @@ export class NBAGameListPage implements OnInit{
                         //Finally, we create an array contains all information we want to show in html, and use this array 
                         //as the datasource of ion-card, which use *ngFor to produce game list.
                         this.NBAGameList.push({
+                            GameID: GameID,
+                            GameDate: GameDate,
+                            HomeTeamID: HomeTeamID,
                             HomeTeamColor: HomeTeamColor,
                             HomeTeamCity: HomeTeamCity,
+                            VisitorTeamID: VisitorTeamID,
                             VisitorTeamCity: VisitorTeamCity,
                             HomeTeamName: HomeTeamName,
                             VisitorTeamName: VisitorTeamName,

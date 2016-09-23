@@ -29,6 +29,7 @@ export class NBADataServices {
                        gameArray.forEach((EachGame, index) => {
                            item = {
                                gameID: EachGame.id,
+                               gameDate: EachGame.date,
                                home: {},
                                visitor: {},
                                Detail: { Loaded: false, Data: {} }

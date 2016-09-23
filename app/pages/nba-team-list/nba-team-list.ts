@@ -20,7 +20,7 @@ export class NBATeamListPage implements OnInit{
 
     ngOnInit() {
         let nowLocalTime: Date = new Date();
-        let nowYear: string = (nowLocalTime.getFullYear() - 1).toString();
+        let nowYear: string = (nowLocalTime.getFullYear()).toString();
         this.GetNBATeamList(nowYear).then(() => null).catch(this.handleError);
         this.TeamYear = nowYear;
         //We can not use slides in ngOnInit. it will cause error, maybe due to the reason that slides is still not be rendered        

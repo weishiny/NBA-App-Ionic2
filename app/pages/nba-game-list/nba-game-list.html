@@ -23,7 +23,7 @@
         </ion-refresher-content>
     </ion-refresher>    
     <ion-card *ngFor = "let NBAgamelist of NBAGameList" [style.background] = "NBAgamelist.HomeTeamColor">        
-        <button ion-item [style.background] = "NBAgamelist.HomeTeamColor">
+        <button ion-item [style.background] = "NBAgamelist.HomeTeamColor" (click)="GameItemTapped($event, NBAgamelist)">
             <div item-left class="center">
                 <ion-thumbnail>
                     <img src="{{NBAgamelist.HomeTeamLogo}}" class="teamLogo">

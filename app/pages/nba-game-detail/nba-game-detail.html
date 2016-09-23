@@ -1,0 +1,119 @@
+<ion-header>            
+    <ion-title [style.background] = "GameTitleColor">                    
+        <ion-icon name="arrow-back" class="gameDetailicon" (click) = "onBack()"></ion-icon>                            
+        <p class="gameDetail">Game Detail</p>                                       
+    </ion-title>                          
+</ion-header>
+
+<ion-content>
+    <ion-item *ngFor = "let NBAgame of NBAGame" [style.background] = "NBAgame.HomeTeamColor">
+        <div item-left class="gamecenter">
+            <ion-thumbnail>
+                <img src="{{NBAgame.HomeTeamLogo}}" class="gameteamLogo">
+            </ion-thumbnail>
+            <p class="gameteamCity">{{NBAgame.HomeTeamCity}}</p>
+            <h2 class="gameteamName">{{NBAgame.HomeTeamName}}</h2>
+            <P class="gameteamStanding">{{HomeTeamStanding}}</P>    
+        </div>
+
+        <div class="gamecenter">
+            <p class="gameinfoDivider">{{NBAgame.GameProcess}}</p>
+            <p class="gameinfoScore">{{NBAgame.HomeScore}} | {{NBAgame.AwayScore}}</p>                      
+        </div>
+
+        <div item-right class="gamecenter">
+            <ion-thumbnail>
+                <img src="{{NBAgame.AwayTeamLogo}}" class="gameteamLogo">
+            </ion-thumbnail>
+            <p class="gameteamCity">{{NBAgame.AwayTeamCity}}</p>
+            <h2 class="gameteamName">{{NBAgame.AwayTeamName}}</h2>
+            <P class="gameteamStanding">{{AwayTeamStanding}}</P>     
+        </div>
+    </ion-item>
+    <ion-segment [(ngModel)]="HomeAway" (ionChange) = "onSegmentChange()">
+      <ion-segment-button value="Home">        
+        <p>{{HomeTeam}}</p>
+      </ion-segment-button>
+      <ion-segment-button value="Away">        
+        <p>{{AwayTeam}}</p>
+      </ion-segment-button>
+    </ion-segment>
+    <div [ngSwitch] = "HomeAway">        
+        <div *ngSwitchCase = "'Home'">            
+            <ion-grid>
+                <ion-scroll scrollX="true" scrollY="true">
+                    <ion-row>
+                        <ion-col width-25 class="titleCol"><div class="titleBox">Player</div></ion-col>
+                        <ion-col width-10 class="titleCol"><div class="titleBox">P</div></ion-col>
+                        <ion-col width-10 class="titleCol"><div class="titleBox">PTS</div></ion-col>
+                        <ion-col width-10 class="titleCol"><div class="titleBox">AST</div></ion-col>
+                        <ion-col width-10 class="titleCol"><div class="titleBox">REB</div></ion-col>
+                        <ion-col width-10 class="titleCol"><div class="titleBox">FG</div></ion-col>
+                        <ion-col width-10 class="titleCol"><div class="titleBox">BLK</div></ion-col>
+                        <ion-col width-10 class="titleCol"><div class="titleBox">STL</div></ion-col>
+                        <ion-col width-10 class="titleCol"><div class="titleBox">3PT</div></ion-col>
+                        <ion-col width-10 class="titleCol"><div class="titleBox">FT</div></ion-col>
+                        <ion-col width-10 class="titleCol"><div class="titleBox">TO</div></ion-col>
+                        <ion-col width-10 class="titleCol"><div class="titleBox">PF</div></ion-col>
+                        <ion-col width-10 class="titleCol"><div class="titleBox">+/-</div></ion-col>
+                        <ion-col width-10 class="titleCol"><div class="titleBox">MIN</div></ion-col>
+                    </ion-row>
+                    <ion-row *ngFor = "let HomeplayerData of HomePlayerFigureArray">
+                        <ion-col width-25 class="titleCol"><div class="dataBox">{{HomeplayerData.PlayerName}}</div></ion-col>
+                        <ion-col width-10 class="titleCol"><div class="dataBox">{{HomeplayerData.Position}}</div></ion-col>
+                        <ion-col width-10 class="titleCol"><div class="dataBox">{{HomeplayerData.Points}}</div></ion-col>
+                        <ion-col width-10 class="titleCol"><div class="dataBox">{{HomeplayerData.Assists}}</div></ion-col>
+                        <ion-col width-10 class="titleCol"><div class="dataBox">{{HomeplayerData.Rebounds}}</div></ion-col>
+                        <ion-col width-10 class="titleCol"><div class="dataBox">{{HomeplayerData.FieldGoals}}</div></ion-col>
+                        <ion-col width-10 class="titleCol"><div class="dataBox">{{HomeplayerData.Blocks}}</div></ion-col>
+                        <ion-col width-10 class="titleCol"><div class="dataBox">{{HomeplayerData.Steals}}</div></ion-col>
+                        <ion-col width-10 class="titleCol"><div class="dataBox">{{HomeplayerData.ThreePointers}}</div></ion-col>
+                        <ion-col width-10 class="titleCol"><div class="dataBox">{{HomeplayerData.FreeThrows}}</div></ion-col>
+                        <ion-col width-10 class="titleCol"><div class="dataBox">{{HomeplayerData.Turnovers}}</div></ion-col>
+                        <ion-col width-10 class="titleCol"><div class="dataBox">{{HomeplayerData.Fouls}}</div></ion-col>
+                        <ion-col width-10 class="titleCol"><div class="dataBox">{{HomeplayerData.PlusMinus}}</div></ion-col>
+                        <ion-col width-10 class="titleCol"><div class="dataBox">{{HomeplayerData.Minutes}}</div></ion-col>
+                    </ion-row>
+                </ion-scroll>
+            </ion-grid>
+        </div>
+        <div *ngSwitchCase = "'Away'">            
+            <ion-grid>
+                <ion-scroll scrollX="true" scrollY="true">
+                    <ion-row>
+                        <ion-col width-25 class="titleCol">Player</ion-col>
+                        <ion-col width-10 class="titleCol">P</ion-col>
+                        <ion-col width-10 class="titleCol">PTS</ion-col>
+                        <ion-col width-10 class="titleCol">AST</ion-col>
+                        <ion-col width-10 class="titleCol">REB</ion-col>
+                        <ion-col width-10 class="titleCol">FG</ion-col>
+                        <ion-col width-10 class="titleCol">BLK</ion-col>
+                        <ion-col width-10 class="titleCol">STL</ion-col>
+                        <ion-col width-10 class="titleCol">3PT</ion-col>
+                        <ion-col width-10 class="titleCol">FT</ion-col>
+                        <ion-col width-10 class="titleCol">TO</ion-col>
+                        <ion-col width-10 class="titleCol">PF</ion-col>
+                        <ion-col width-10 class="titleCol">+/-</ion-col>
+                        <ion-col width-10 class="titleCol">MIN</ion-col>
+                    </ion-row>
+                    <ion-row *ngFor = "let AwayplayerData of AwayPlayerFigureArray">
+                        <ion-col width-25 class="titleCol"><div class="dataBox">{{AwayplayerData.PlayerName}}</div></ion-col>
+                        <ion-col width-10 class="titleCol"><div class="dataBox">{{AwayplayerData.Position}}</div></ion-col>
+                        <ion-col width-10 class="titleCol"><div class="dataBox">{{AwayplayerData.Points}}</div></ion-col>
+                        <ion-col width-10 class="titleCol"><div class="dataBox">{{AwayplayerData.Assists}}</div></ion-col>
+                        <ion-col width-10 class="titleCol"><div class="dataBox">{{AwayplayerData.Rebounds}}</div></ion-col>
+                        <ion-col width-10 class="titleCol"><div class="dataBox">{{AwayplayerData.FieldGoals}}</div></ion-col>
+                        <ion-col width-10 class="titleCol"><div class="dataBox">{{AwayplayerData.Blocks}}</div></ion-col>
+                        <ion-col width-10 class="titleCol"><div class="dataBox">{{AwayplayerData.Steals}}</div></ion-col>
+                        <ion-col width-10 class="titleCol"><div class="dataBox">{{AwayplayerData.ThreePointers}}</div></ion-col>
+                        <ion-col width-10 class="titleCol"><div class="dataBox">{{AwayplayerData.FreeThrows}}</div></ion-col>
+                        <ion-col width-10 class="titleCol"><div class="dataBox">{{AwayplayerData.Turnovers}}</div></ion-col>
+                        <ion-col width-10 class="titleCol"><div class="dataBox">{{AwayplayerData.Fouls}}</div></ion-col>
+                        <ion-col width-10 class="titleCol"><div class="dataBox">{{AwayplayerData.PlusMinus}}</div></ion-col>
+                        <ion-col width-10 class="titleCol"><div class="dataBox">{{AwayplayerData.Minutes}}</div></ion-col>
+                    </ion-row>
+                </ion-scroll>
+            </ion-grid>
+        </div>
+    </div>
+</ion-content>
