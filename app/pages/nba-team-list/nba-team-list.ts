@@ -1,8 +1,9 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { Slides, AlertController } from 'ionic-angular';
+import { Slides, AlertController, NavController } from 'ionic-angular';
 import { NBATeamDataType } from '../../base-data-type/nba-team-datatype';
 import { NBATeamMap } from '../../services/nba-team-map/nba-team-map';
 import { NBADataServices } from '../../services/nba-data-services/nba-data-services';
+import { NBATeamDetailPage } from '../nba-team-detail/nba-team-detail';
 
 @Component({
     templateUrl: 'build/pages/nba-team-list/nba-team-list.html'    
@@ -14,7 +15,8 @@ export class NBATeamListPage implements OnInit{
     ConferenceTitle: string = 'Western'; //default value is Western
     TeamYear: string;
 
-    constructor(private NBAteammap: NBATeamMap, private NBAdataservices: NBADataServices, private TeamalertCtrl: AlertController) {
+    constructor(private NBAteammap: NBATeamMap, private NBAdataservices: NBADataServices,
+                private TeamalertCtrl: AlertController, public navCtrl: NavController) {
                         
     }
 
@@ -35,6 +37,14 @@ export class NBATeamListPage implements OnInit{
     onDateChange() {
         //TeamYear is two way binding, so whenever the datepicker is changed, we just use TeamYear
         this.GetNBATeamList(this.TeamYear).then(() => null).catch(this.handleError);
+    }
+
+    TeamItemTapped(event, TeamItem, TeamConfparam) {
+        this.navCtrl.push(NBATeamDetailPage, {
+            TeamItem: TeamItem,
+            TeamConfparam: TeamConfparam,
+            TeamYearparam: this.TeamYear
+        });
     }
 
     private GetNBATeamList(GameYear: string): Promise<any> {
@@ -64,6 +74,7 @@ export class NBATeamListPage implements OnInit{
                     let WestTeamPCT: string = EachTeamitem['PCT'];
 
                     this.NBAWestTeamItem.push({
+                        WestTeamID: WestTeamID,
                         WestTeamStanding: WestTeamStanding,
                         WestTeamCity: WestTeamCity,
                         WestTeamName: WestTeamName,
@@ -90,6 +101,7 @@ export class NBATeamListPage implements OnInit{
                     let EastTeamPCT: string = EachTeamitem['PCT'];
 
                     this.NBAEastTeamItem.push({
+                        EastTeamID: EastTeamID,
                         EastTeamStanding: EastTeamStanding,
                         EastTeamCity: EastTeamCity,
                         EastTeamName: EastTeamName,

@@ -40,7 +40,7 @@
     </ion-segment>
     <div [ngSwitch] = "HomeAway">        
         <div *ngSwitchCase = "'Home'">            
-            <ion-grid>
+            <ion-grid class="gameDetailGrid">
                 <ion-scroll scrollX="true" scrollY="true">
                     <ion-row>
                         <ion-col width-25 class="titleCol"><div class="titleBox">Player</div></ion-col>
@@ -78,7 +78,7 @@
             </ion-grid>
         </div>
         <div *ngSwitchCase = "'Away'">            
-            <ion-grid>
+            <ion-grid class="gameDetailGrid">
                 <ion-scroll scrollX="true" scrollY="true">
                     <ion-row>
                         <ion-col width-25 class="titleCol">Player</ion-col>

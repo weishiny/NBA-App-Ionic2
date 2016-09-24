@@ -1,0 +1,64 @@
+<ion-header>            
+    <ion-title [style.background] = "TeamTitleColor">                    
+        <ion-icon name="arrow-back" class="teamDetailicon" (click) = "onBack()"></ion-icon>                            
+        <p class="teamDetail">Team Detail</p>                                       
+    </ion-title>                          
+</ion-header>
+
+<ion-content>
+    <ion-item *ngFor = "let NBAteaminfo of NBATeamInfo" [style.background] = "NBAteaminfo.TeamColor">
+        <div item-left class="teamcenter">            
+            <p class="teamDetailCity">{{NBAteaminfo.TeamCity}}</p>
+            <h2 class="teamDetailName">{{NBAteaminfo.TeamName}}</h2>                
+        </div>
+        <div class="teamcenter">
+            <ion-thumbnail>
+                <img src="{{NBAteaminfo.TeamLogo}}" class="teamDetailLogo">
+            </ion-thumbnail>                  
+        </div>
+        <div item-right class="gamecenter">
+            <p class="teamRankInfo">{{NBAteaminfo.Win}} W - {{NBAteaminfo.Loss}} L</p>
+            <p class="teamRankInfo">#{{NBAteaminfo.ConfRank}} in the {{NBAteaminfo.TeamConf}} Conference</p>
+            <p class="teamRankInfo">#{{NBAteaminfo.DiviRank}} in the {{NBAteaminfo.TeamDivi}} Division</p>
+        </div>        
+    </ion-item>
+    
+    <ion-row class="eachRank">
+        <ion-col width-25>
+            <p class="Teamrank">PPG {{PtsRank}}</p>
+        </ion-col>
+        <ion-col width-25>
+            <p class="Teamrank">RPG {{RebRank}}</p>
+        </ion-col>
+        <ion-col width-25>
+            <p class="Teamrank">APG {{AstRank}}</p>
+        </ion-col>
+        <ion-col width-25>
+            <p class="Teamrank">OPPG {{OppRank}}</p>
+        </ion-col>
+    </ion-row>
+    <div class="teamDetailContent">
+        <ion-scroll scrollX="true" scrollY="true">
+            <ion-item *ngFor = "let PlayerBasicInfoStat of NBATeamPlayerBasicInfoStat">
+                <ion-grid>                
+                    <ion-row>
+                        <ion-col width-10>
+                            <ion-avatar class="portraitImage" [style.border-color] = "TeamTitleColor">
+                                <img src="{{PlayerBasicInfoStat.PlayerPicUrl}}">
+                            </ion-avatar>
+                        </ion-col>
+                        <ion-col width-33>
+                            <p class="pwrap">{{PlayerBasicInfoStat.Name}}</p>
+                            <p>{{PlayerBasicInfoStat.Pos}} {{PlayerBasicInfoStat.JerseyNum}}</p>
+                        </ion-col>
+                        <ion-col width-50>
+                            <p class="pBasicInfo">Age: {{PlayerBasicInfoStat.Age}} Height: {{PlayerBasicInfoStat.Height}} Weight: {{PlayerBasicInfoStat.Weight}}</p>
+                            <p class="pPlayerStat">Game Played: {{PlayerBasicInfoStat.Gp}}</p>
+                            <p class="pPlayerStat">{{PlayerBasicInfoStat.Pts}} Pts {{PlayerBasicInfoStat.Reb}} Reb {{PlayerBasicInfoStat.Ast}} Ast {{PlayerBasicInfoStat.Min}} Mins</p>
+                        </ion-col>
+                    </ion-row>                
+                </ion-grid>
+            </ion-item>
+        </ion-scroll>
+    </div>    
+</ion-content>

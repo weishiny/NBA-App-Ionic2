@@ -1,0 +1,62 @@
+$write-color: #fff;
+.teamDetailicon {
+    margin-top: 12px;
+    color: $write-color;
+}
+.teamDetail {
+    margin-top: -25px;
+    text-align: center;
+    color: $write-color;
+    font-weight: bold;
+    font-size: 100%;
+}
+.teamcenter {
+    text-align: center;
+}
+.teamDetailLogo {
+    width: 95%;
+    height: 95%;      
+}
+.teamRankInfo {
+    color: $write-color !important;
+}
+.teamDetailCity {
+    color: $write-color !important;    
+}
+.teamDetailStanding {
+    color: $write-color !important;    
+}
+.teamDetailName {
+    color: $write-color !important;
+    font-weight: bold !important;    
+}
+.Teamrank {
+    font-weight: bold !important;
+    color: gray;
+}
+.teamDetailContent {
+    ion-scroll {
+        white-space: nowrap;
+        height: 55vh;
+        //We need to set ion-scroll's height, then content inside of ion-scroll can be display
+        //ion-content will generate a scroll-content automatically 
+    }
+}
+.eachRank {
+    text-align: center;
+}
+.portraitImage {    
+    border-width: 1px;
+    margin-left: -15px;
+}
+.pwrap {
+    white-space: normal;
+    //Specify whether the text elements will wrap
+}
+.pBasicInfo {
+    font-size: 10px !important;
+}
+.pPlayerStat {
+    font-size: 10px !important;    
+    font-weight: bold;
+}
