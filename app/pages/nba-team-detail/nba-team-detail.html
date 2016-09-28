@@ -6,7 +6,7 @@
 </ion-header>
 
 <ion-content>
-    <ion-item *ngFor = "let NBAteaminfo of NBATeamInfo" [style.background] = "NBAteaminfo.TeamColor">
+    <ion-item *ngFor = "let NBAteaminfo of NBATeamInfo" [style.background] = "NBAteaminfo.TeamColor" class="teamHeaderItem">
         <div item-left class="teamcenter">            
             <p class="teamDetailCity">{{NBAteaminfo.TeamCity}}</p>
             <h2 class="teamDetailName">{{NBAteaminfo.TeamName}}</h2>                
@@ -39,7 +39,7 @@
     </ion-row>
     <div class="teamDetailContent">
         <ion-scroll scrollX="true" scrollY="true">
-            <ion-item *ngFor = "let PlayerBasicInfoStat of NBATeamPlayerBasicInfoStat">
+            <button ion-item *ngFor = "let PlayerBasicInfoStat of NBATeamPlayerBasicInfoStat" (click) = "PlayerItemTapped($event, PlayerBasicInfoStat)">
                 <ion-grid>                
                     <ion-row>
                         <ion-col width-10>
@@ -58,7 +58,7 @@
                         </ion-col>
                     </ion-row>                
                 </ion-grid>
-            </ion-item>
+            </button>
         </ion-scroll>
     </div>    
 </ion-content>

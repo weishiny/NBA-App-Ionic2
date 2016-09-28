@@ -5,8 +5,10 @@ import { HelloIonicPage } from './pages/hello-ionic/hello-ionic';
 import { ListPage } from './pages/list/list';
 import { TabsPage } from './pages/tabs/tabs';
 import { NBATeamMap } from './services/nba-team-map/nba-team-map';
-import { NBADataServices } from './services/nba-data-services/nba-data-services'
-import { NBADataAddress } from './services/nba-data-services/nba-data-address'
+import { NBADataServices } from './services/nba-data-services/nba-data-services';
+import { NBADataAddress } from './services/nba-data-services/nba-data-address';
+//we need to import this chart.js file in app.ts so that we can let chart be displayed in Ionic2 project
+import '../node_modules/chart.js/dist/Chart.bundle.min.js';
 //import {NBATeamListPage} from './pages/nba-team-list/nba-team-list'; //改用TabsPage控制
 
 @Component({

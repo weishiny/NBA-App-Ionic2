@@ -6,7 +6,7 @@
 </ion-header>
 
 <ion-content>
-    <ion-item *ngFor = "let NBAgame of NBAGame" [style.background] = "NBAgame.HomeTeamColor">
+    <ion-item *ngFor = "let NBAgame of NBAGame" [style.background] = "NBAgame.HomeTeamColor" class="gameHeaderItem">
         <div item-left class="gamecenter">
             <ion-thumbnail>
                 <img src="{{NBAgame.HomeTeamLogo}}" class="gameteamLogo">

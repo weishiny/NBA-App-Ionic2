@@ -1,4 +1,18 @@
 $write-color: #fff;
+.gameHeaderItem.item .item-inner {
+    border-bottom: 0px; 
+    //resolve issue about left-bottom side of header will have extra parts, 
+    //because we use ion-item, => .item .item-inner have 
+    //.item .item-inner {
+    //  padding-right: 8px;
+    //  border-bottom: 1px solid #dedede;
+    //}
+    //so we use border-bottom: 0px to solve this issue
+
+    //we use .gameHeaderItem.item .item-inner because we will put this style on ion-item
+    //so we want to change .item-inner below the same stage .gameHeaderItem.item
+    //Selects all .item-inner elements inside .gameHeaderItem.item elements   
+}
 .gameDetailicon {
     margin-top: 12px;
     color: $write-color;

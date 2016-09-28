@@ -1,0 +1,25 @@
+<ion-header>
+    <ion-navbar>
+        <button menuToggle>
+            <ion-icon name="menu"></ion-icon>
+        </button>
+        <ion-title>            
+            <ion-searchbar (ionInput) = "getPlayerItem($event)">
+            </ion-searchbar>            
+        </ion-title>                      
+    </ion-navbar>
+</ion-header>
+
+<ion-content>
+    <ion-list [virtualScroll]="NBAPlayerList">
+        <button ion-item *virtualItem="let NBAplayer" (click) = "PlayerItemTapped($event, NBAplayer)">
+            <p class="playerName">{{NBAplayer.FirstName}} {{NBAplayer.LastName}}</p>
+            <p class="playerTeam">{{NBAplayer.TeamCity}} {{NBAplayer.TeamName}}</p>
+            <div item-right>
+                <ion-avatar class="playeravartarHeight">
+                    <img src="{{NBAplayer.TeamLogo}}" class="playerright-image">
+                </ion-avatar>                     
+            </div>
+        </button>
+    </ion-list>
+</ion-content>

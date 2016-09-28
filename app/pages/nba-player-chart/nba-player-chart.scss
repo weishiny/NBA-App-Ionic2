@@ -1,0 +1,14 @@
+.chart {
+    display: block; //use this style to show chart
+}
+.playerButtonCenter {
+    text-align: center;
+}
+.chart-container {
+    ion-scroll {
+        white-space: nowrap;
+        height: 60vh;
+        //We need to set ion-scroll's height, then content inside of ion-scroll can be display
+        //ion-content will generate a scroll-content automatically 
+    }
+}

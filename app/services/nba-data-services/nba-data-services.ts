@@ -180,7 +180,7 @@ export class NBADataServices {
                                    FirstName: nameArray[1], //Stephen
                                    LastName: nameArray[0], //Curry
                                    Name: nameArray[1] + ' ' + nameArray[0],
-                                   TeamId: matchitem[7],
+                                   TeamID: matchitem[7],
                                    TeamCity: matchitem[8],
                                    TeamName: matchitem[9],
                                    TeamAbbr: matchitem[10],

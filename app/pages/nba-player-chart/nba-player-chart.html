@@ -1,0 +1,25 @@
+<div *ngIf="BindingplayerID" class="chart-container">
+    <ion-scroll scrollX="true" scrollY="true">  
+        <base-chart class="chart"
+                    [datasets]="GameLogChartData"
+                    [labels]="GameLogChartLabels"
+                    [chartType]="GameLogChartType"
+                    (chartHover)="GameLogchartHovered($event)"
+                    (chartClick)="GameLogchartClicked($event)">
+        </base-chart>
+        <div class="playerButtonCenter">
+            <button small clear [style.color] = "Bindingcolor" (click) = "onChangeChartType()">
+                <ion-icon name="paper"></ion-icon>
+                Change Chart Type
+            </button>
+        </div>
+        <base-chart class="chart"
+                    [datasets]="PlusMinusChartData"
+                    [labels]="PlusMinusChartLabels"
+                    [chartType]="PlusMinusChartType"
+                    [colors]="PlusMinusColors"
+                    (chartHover)="PlusMinuschartHovered($event)"
+                    (chartClick)="PlusMinuschartClicked($event)">
+        </base-chart>
+    </ion-scroll>        
+</div>

@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Refresher, LoadingController, AlertController, NavController, NavParams } from 'ionic-angular';
 import { NBATeamMap } from '../../services/nba-team-map/nba-team-map';
 import { NBADataServices } from '../../services/nba-data-services/nba-data-services';
+import { NBAPlayerDetailPage } from '../nba-player-detail/nba-player-detail';
 
 @Component({
     templateUrl: 'build/pages/nba-team-detail/nba-team-detail.html'  
@@ -21,7 +22,7 @@ export class NBATeamDetailPage implements OnInit {
     
     constructor(private NBAteammap: NBATeamMap, private NBAdataservices: NBADataServices, 
                 private TeamDetailalertCtrl: AlertController, public navCtrl: NavController, navParams: NavParams,
-                public loadingCtrl: LoadingController ) {
+                public loadingCtrl: LoadingController) {
         this.NBATeamMapData = NBAteammap.getNBATeamArrayData();
         this.selectedTeam = navParams.get('TeamItem');
         this.selectedTeamConfparam = navParams.get('TeamConfparam');
@@ -50,6 +51,15 @@ export class NBATeamDetailPage implements OnInit {
 
     onBack() {
         this.navCtrl.pop();
+    }
+
+    PlayerItemTapped(event, PlayerBasicInfoStat) {
+        console.log(PlayerBasicInfoStat);
+        this.navCtrl.push(NBAPlayerDetailPage, {
+            PlayerID: PlayerBasicInfoStat['PlayerID'],
+            TeamID: PlayerBasicInfoStat['TeamID'],
+            TeamColor: PlayerBasicInfoStat['TeamColor']             
+        });
     }
 
     private GetTeamInfo(TeamID: string, season: string): Promise<any> {        
@@ -115,6 +125,8 @@ export class NBATeamDetailPage implements OnInit {
                                         //let PlayerPicUrl = 'http://stats.nba.com/media/players/230x185/' + playerstat['PlayerID'] + '.png';
                                         let PlayerPicUrl = 'statsProxy/media/players/230x185/' + playerstat['PlayerID'] + '.png';
                                         this.NBATeamPlayerBasicInfoStat.push({
+                                            TeamID: TeamID,
+                                            TeamColor: this.TeamTitleColor,
                                             PlayerPicUrl: PlayerPicUrl,                                         
                                             Ast: playerstat['Ast'],
                                             Gp: playerstat['Gp'],

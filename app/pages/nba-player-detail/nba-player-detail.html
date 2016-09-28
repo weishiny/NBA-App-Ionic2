@@ -1,0 +1,28 @@
+<ion-header>           
+    <ion-title [style.background] = "PlayerTitleColor">                    
+        <ion-icon name="arrow-back" class="playerDetailicon" (click) = "onBack()"></ion-icon>          
+    </ion-title>                          
+</ion-header>
+
+<ion-content>
+    <ion-item *ngFor = "let NBAplayerinfo of NBAPlayerInfo" [style.background] = "NBAplayerinfo.TeamColor" class="playerHeaderItem">                   
+        <div class="playerCenter">
+            <ion-avatar>
+                <img src="{{NBAplayerinfo.PlayerPicUrl}}" class="playerPortrait">
+            </ion-avatar>
+            <p class="playerBasic">{{NBAplayerinfo.FirstName}} {{NBAplayerinfo.LastName}} - {{NBAplayerinfo.JerseyNum}}</p>                
+        </div>        
+    </ion-item>
+    <ion-row class="PlayereachRank">
+        <ion-col width-33>
+            <p class="Playerrank">{{PtsRank}} Points</p>
+        </ion-col>
+        <ion-col width-33>
+            <p class="Playerrank">{{AstRank}} Assists</p>
+        </ion-col>
+        <ion-col width-33>
+            <p class="Playerrank">{{RebRank}} Rebounds</p>
+        </ion-col>               
+    </ion-row>
+    <nba-player-chart [BindingplayerID] = "PlayerID" [Bindingcolor] = "selectedTeamColor"></nba-player-chart>
+</ion-content>

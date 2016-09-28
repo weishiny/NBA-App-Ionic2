@@ -1,0 +1,17 @@
+.playerName {
+    font-size: 16px !important;
+    font-weight: bold;
+}
+.playerTeam {
+    font-size: 12px !important;    
+}
+.playerright-image {
+    position: absolute !important;
+    top: 5px !important;
+    right: 5px !important;
+    max-width: 50px !important;
+    max-height: 50px !important;        
+}
+.playeravartarHeight {
+    min-height: 10% !important; //used for ion item's height, to overwrite ion-avartar's min-height which affect item's height    
+}
