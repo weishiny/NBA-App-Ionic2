@@ -46,56 +46,56 @@ export class NBADataAddress {
      * @Example: Year => 2015
      */
     LeagueStanding(Year: string): Promise<any> {
-        //let LeagueStandingUrl = 'http://data.nba.com/data/json/cms/' + Year + '/league/standings.json';
-        let LeagueStandingUrl = 'dataProxy/data/json/cms/' + Year + '/league/standings.json';
+        let LeagueStandingUrl = 'http://data.nba.com/data/json/cms/' + Year + '/league/standings.json';
+        //let LeagueStandingUrl = 'dataProxy/data/json/cms/' + Year + '/league/standings.json';
         return this.http.get(LeagueStandingUrl).toPromise().then(response => response.json()).catch(this.handleError);
     }
     /**@Param: Season
      * @Example: Season => 2015-16
      */
     PlayerList(Season: string): Promise<any> {
-        //let PlayerListUrl = 'http://stats.nba.com/stats/commonallplayers?IsOnlyCurrentSeason=0&LeagueID=00&Season=' + Season;
-        let PlayerListUrl = 'statsProxy/stats/commonallplayers?IsOnlyCurrentSeason=0&LeagueID=00&Season=' + Season;
+        let PlayerListUrl = 'http://stats.nba.com/stats/commonallplayers?IsOnlyCurrentSeason=0&LeagueID=00&Season=' + Season;
+        //let PlayerListUrl = 'statsProxy/stats/commonallplayers?IsOnlyCurrentSeason=0&LeagueID=00&Season=' + Season;
         return this.http.get(PlayerListUrl).toPromise().then(response => response.json()).catch(this.handleError);
     }
     /**@Param: PlayerID
      * @Example: PlayerID => 201939
      */
     PlayerInfo(PlayerID: string): Promise<any> {
-        //let PlayerInfoUrl = 'http://stats.nba.com/stats/commonplayerinfo?LeagueID=00&PlayerID=' + PlayerID + '&SeasonType=Regular+Season';
-        let PlayerInfoUrl = 'statsProxy/stats/commonplayerinfo?LeagueID=00&PlayerID=' + PlayerID + '&SeasonType=Regular+Season';
+        let PlayerInfoUrl = 'http://stats.nba.com/stats/commonplayerinfo?LeagueID=00&PlayerID=' + PlayerID + '&SeasonType=Regular+Season';
+        //let PlayerInfoUrl = 'statsProxy/stats/commonplayerinfo?LeagueID=00&PlayerID=' + PlayerID + '&SeasonType=Regular+Season';
         return this.http.get(PlayerInfoUrl).toPromise().then(response => response.json()).catch(this.handleError);
     }
     /**@Param: PlayerID, Season
      * @Example: PlayerID => 201939; Season => 2015-16
      */
     PlayerLog(PlayerID: string, Season: string): Promise<any> {
-        //let PlayerLogUrl = 'http://stats.nba.com/stats/playergamelog?LeagueID=00&PerMode=PerGame&PlayerID=' + PlayerID + '&Season=' + Season + '&SeasonType=Regular+Season';
-        let PlayerLogUrl = 'statsProxy/stats/playergamelog?LeagueID=00&PerMode=PerGame&PlayerID=' + PlayerID + '&Season=' + Season + '&SeasonType=Regular+Season';
+        let PlayerLogUrl = 'http://stats.nba.com/stats/playergamelog?LeagueID=00&PerMode=PerGame&PlayerID=' + PlayerID + '&Season=' + Season + '&SeasonType=Regular+Season';
+        //let PlayerLogUrl = 'statsProxy/stats/playergamelog?LeagueID=00&PerMode=PerGame&PlayerID=' + PlayerID + '&Season=' + Season + '&SeasonType=Regular+Season';
         return this.http.get(PlayerLogUrl).toPromise().then(response => response.json()).catch(this.handleError);
     }
     /**@Param: TeamID, Season
      * @Example: TeamID => 1610612744; Season => 2015-16
      */
     TeamInfo(TeamID: string, Season: string): Promise<any> {
-        //let TeamInfoUrl = 'http://stats.nba.com/stats/teaminfocommon?LeagueID=00&SeasonType=Regular+Season&TeamID=' + TeamID + '&season=' + Season;
-        let TeamInfoUrl = 'statsProxy/stats/teaminfocommon?LeagueID=00&SeasonType=Regular+Season&TeamID=' + TeamID + '&season=' + Season;
+        let TeamInfoUrl = 'http://stats.nba.com/stats/teaminfocommon?LeagueID=00&SeasonType=Regular+Season&TeamID=' + TeamID + '&season=' + Season;
+        //let TeamInfoUrl = 'statsProxy/stats/teaminfocommon?LeagueID=00&SeasonType=Regular+Season&TeamID=' + TeamID + '&season=' + Season;
         return this.http.get(TeamInfoUrl).toPromise().then(response => response.json()).catch(this.handleError);
     }
     /**@Param: Season, TeamID
      * @Example: Season => 2015-16; TeamID => 1610612744
      */
     TeamDetail(Season: string, TeamID: string): Promise<any> {
-        //let TeamDetailUrl = 'http://stats.nba.com/stats/teamplayerdashboard?DateFrom=&DateTo=&GameSegment=&LastNGames=0&LeagueID=00&Location=&MeasureType=Base&Month=0&OpponentTeamID=0&Outcome=&PaceAdjust=N&PerMode=PerGame&Period=0&PlusMinus=N&Rank=N&Season=' + Season + '&SeasonSegment=&SeasonType=Regular+Season&TeamID=' + TeamID + '&VsConference=&VsDivision=';
-        let TeamDetailUrl = 'statsProxy/stats/teamplayerdashboard?DateFrom=&DateTo=&GameSegment=&LastNGames=0&LeagueID=00&Location=&MeasureType=Base&Month=0&OpponentTeamID=0&Outcome=&PaceAdjust=N&PerMode=PerGame&Period=0&PlusMinus=N&Rank=N&Season=' + Season + '&SeasonSegment=&SeasonType=Regular+Season&TeamID=' + TeamID + '&VsConference=&VsDivision=';
+        let TeamDetailUrl = 'http://stats.nba.com/stats/teamplayerdashboard?DateFrom=&DateTo=&GameSegment=&LastNGames=0&LeagueID=00&Location=&MeasureType=Base&Month=0&OpponentTeamID=0&Outcome=&PaceAdjust=N&PerMode=PerGame&Period=0&PlusMinus=N&Rank=N&Season=' + Season + '&SeasonSegment=&SeasonType=Regular+Season&TeamID=' + TeamID + '&VsConference=&VsDivision=';
+        //let TeamDetailUrl = 'statsProxy/stats/teamplayerdashboard?DateFrom=&DateTo=&GameSegment=&LastNGames=0&LeagueID=00&Location=&MeasureType=Base&Month=0&OpponentTeamID=0&Outcome=&PaceAdjust=N&PerMode=PerGame&Period=0&PlusMinus=N&Rank=N&Season=' + Season + '&SeasonSegment=&SeasonType=Regular+Season&TeamID=' + TeamID + '&VsConference=&VsDivision=';
         return this.http.get(TeamDetailUrl).toPromise().then(response => response.json()).catch(this.handleError);
     }
     /**@Param: Season, TeamID
      * @Example: Season => 2015-16; TeamID => 1610612744
      */
     TeamDetailBasic(Season: string, TeamID: string): Promise<any> {
-        //let TeamDetailBasicUrl = 'http://stats.nba.com/stats/commonteamroster?LeagueID=00&Season=' + Season + '&TeamID=' + TeamID;
-        let TeamDetailBasicUrl = 'statsProxy/stats/commonteamroster?LeagueID=00&Season=' + Season + '&TeamID=' + TeamID;
+        let TeamDetailBasicUrl = 'http://stats.nba.com/stats/commonteamroster?LeagueID=00&Season=' + Season + '&TeamID=' + TeamID;
+        //let TeamDetailBasicUrl = 'statsProxy/stats/commonteamroster?LeagueID=00&Season=' + Season + '&TeamID=' + TeamID;
         return this.http.get(TeamDetailBasicUrl).toPromise().then(response => response.json()).catch(this.handleError);
     }    
 

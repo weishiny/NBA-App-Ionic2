@@ -7,7 +7,7 @@
 .chart-container {
     ion-scroll {
         white-space: nowrap;
-        height: 60vh;
+        height: 70vh;
         //We need to set ion-scroll's height, then content inside of ion-scroll can be display
         //ion-content will generate a scroll-content automatically 
     }

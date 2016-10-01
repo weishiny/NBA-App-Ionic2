@@ -122,8 +122,8 @@ export class NBATeamDetailPage implements OnInit {
                                 let PlayerStatArray: any[] = PlayerGameStatParam;
                                 PlayerStatArray.forEach(playerstat => {
                                     if (typeof TeamDetailPlayerBasicInfo[playerstat['PlayerID']] !== "undefined" && TeamDetailPlayerBasicInfo[playerstat['PlayerID']] !== null) {
-                                        //let PlayerPicUrl = 'http://stats.nba.com/media/players/230x185/' + playerstat['PlayerID'] + '.png';
-                                        let PlayerPicUrl = 'statsProxy/media/players/230x185/' + playerstat['PlayerID'] + '.png';
+                                        let PlayerPicUrl = 'http://stats.nba.com/media/players/230x185/' + playerstat['PlayerID'] + '.png';
+                                        //let PlayerPicUrl = 'statsProxy/media/players/230x185/' + playerstat['PlayerID'] + '.png';
                                         this.NBATeamPlayerBasicInfoStat.push({
                                             TeamID: TeamID,
                                             TeamColor: this.TeamTitleColor,

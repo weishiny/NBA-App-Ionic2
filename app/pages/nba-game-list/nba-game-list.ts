@@ -87,13 +87,12 @@ export class NBAGameListPage implements OnInit{
         //involves multiplying by 3600 * 1000 = 3600000.
         let timezone = utc + (3600000 * offset);
         let anotherTimeZoneTime = new Date(timezone);
-      
+        
         let nowYear: string = anotherTimeZoneTime.getFullYear().toString();
         //Months are zero based
-        let nowMonth: string =  (anotherTimeZoneTime.getMonth() + 1) < 10 ? "0" + (SpecificLocalDateTime.getMonth() + 1).toString() : (SpecificLocalDateTime.getMonth() + 1).toString();
-        let nowDate: string = anotherTimeZoneTime.getDate() < 10 ? "0" + SpecificLocalDateTime.getDate().toString() : SpecificLocalDateTime.getDate().toString(); 
-        
-        //let nowHour: string = anotherTimeZoneTime.getHours() < 10 ? "0" + SpecificLocalDateTime.getHours().toString() : SpecificLocalDateTime.getHours().toString();      
+        let nowMonth: string =  (anotherTimeZoneTime.getMonth() + 1) < 10 ? "0" + (anotherTimeZoneTime.getMonth() + 1).toString() : (anotherTimeZoneTime.getMonth() + 1).toString();
+        let nowDate: string = anotherTimeZoneTime.getDate() < 10 ? "0" + anotherTimeZoneTime.getDate().toString() : anotherTimeZoneTime.getDate().toString();         
+        //let nowHour: string = anotherTimeZoneTime.getHours() < 10 ? "0" + anotherTimeZoneTime.getHours().toString() : anotherTimeZoneTime.getHours().toString();      
         //let nowMinute: string = anotherTimeZoneTime.getMinutes().toString();
         //let nowSecond: string = anotherTimeZoneTime.getSeconds().toString();
         

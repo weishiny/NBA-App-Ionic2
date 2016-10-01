@@ -60,8 +60,8 @@ export class NBAPlayerDetailPage implements OnInit {
                 let TeamColor: string = NBAMatchIDArray[0]['Color'];
                 this.PlayerTitleColor = TeamColor;
 
-                //let PlayerPicUrl = 'http://stats.nba.com/media/players/230x185/' + playerInfo['PlayerID'] + '.png';
-                let PlayerPicUrl = 'statsProxy/media/players/230x185/' + playerInfo['PlayerID'] + '.png';
+                let PlayerPicUrl = 'http://stats.nba.com/media/players/230x185/' + playerInfo['PlayerID'] + '.png';
+                //let PlayerPicUrl = 'statsProxy/media/players/230x185/' + playerInfo['PlayerID'] + '.png';
 
                 this.NBAPlayerInfo.push({
                     Affiliation: playerInfo['Affiliation'],                    
@@ -85,6 +85,7 @@ export class NBAPlayerDetailPage implements OnInit {
     }
 
     private handleError(error: any): Promise<any> {
+        alert(error);
         console.error('An error occurred', error);
         return Promise.reject(error.message || error);
     }

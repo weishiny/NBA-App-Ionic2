@@ -165,8 +165,8 @@ export class NBADataServices {
                            currentYear = currentDate.getFullYear() + '';
                        } else {
                            //Game before September is former season
-                           //currentYear = currentDate.getFullYear() - 1 + '';
-                           currentYear = '2016'; //Test
+                           currentYear = currentDate.getFullYear() - 1 + '';
+                           //currentYear = '2016'; //Test
                        }
 
                        let nameArray: any[];
