@@ -8,13 +8,13 @@ So, this project will follow the function and style of repo: https://github.com/
 the only difference between both is development language, i.e. this project use Ionic2 & Angular2 instead of React Native.
 
 ## ToDoList:
-- [x] **Game List Page**
-- [x] **Player List Page**
-- [x] **Team List Page**
-- [x] **Chart Page**
-- [ ] **Game List Page: Each Game's 'undefined' issue of Game Process**
-- [ ] **Player Detail Page: Create Loading Message**
-- [ ] **Team Detail Page: Create Loading Message**
+- [x] Game List Page
+- [x] Player List Page
+- [x] Team List Page
+- [x] Chart Page
+- [ ] Game List Page: Each Game's **undefined** issue of Game Process
+- [ ] Player Detail Page: Create Loading Message
+- [ ] Team Detail Page: Create Loading Message
 
 ## Use Cases
 * Alert
