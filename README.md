@@ -7,17 +7,16 @@ and I'm just inspired by this repo: https://github.com/wwayne/react-native-nba-a
 So, this project will follow the function and style of repo: https://github.com/wwayne/react-native-nba-app,
 the only difference between both is development language, i.e. this project use Ionic2 & Angular2 instead of React Native.
 
-### ToDoList:
-- [x] Game List Page
-- [x] Player List Page
-- [x] Team List Page
-- [x] Chart Page
-- [ ] Game List Page: Each Game's 'undefined' issue of Game Process
-- [ ] Player Detail Page: Create Loading Message
-- [ ] Team Detail Page: Create Loading Message
+## ToDoList:
+- [x] **Game List Page**
+- [x] **Player List Page**
+- [x] **Team List Page**
+- [x] **Chart Page**
+- [ ] **Game List Page: Each Game's 'undefined' issue of Game Process**
+- [ ] **Player Detail Page: Create Loading Message**
+- [ ] **Team Detail Page: Create Loading Message**
 
-### Use Cases
-
+## Use Cases
 * Alert
 * Cards
 * Datetime
@@ -29,9 +28,10 @@ the only difference between both is development language, i.e. this project use 
 * Tabs
 * Using Angular HTTP for JSON
 
-### Contribution :sparkles: :sparkles: 
+## Contribution :sparkles::tada:
 This project is first NBA-related App developed by Ionic2 as I know.
 
+##Demo
 ### Game Page
 ![nbagame](https://cloud.githubusercontent.com/assets/14101724/19098178/c23b03a4-8add-11e6-804c-0dfe6d15ea12.gif)
 
@@ -42,3 +42,4 @@ This project is first NBA-related App developed by Ionic2 as I know.
 
 ### Team Page
 ![nbateam](https://cloud.githubusercontent.com/assets/14101724/19098292/92067d98-8ade-11e6-9403-d56d213b64f8.gif)
+
