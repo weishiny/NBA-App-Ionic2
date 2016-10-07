@@ -12,9 +12,10 @@ the only difference between both is development language, i.e. this project use 
 - [x] Player List Page
 - [x] Team List Page
 - [x] Chart Page
-- [ ] Game List Page: Each Game's **undefined** issue of Game Process
-- [ ] Player Detail Page: Create Loading Message
-- [ ] Team Detail Page: Create Loading Message
+- [x] Each Game's **undefined** issue of Game Process (Game List Page)
+- [x] Create Loading Message (Player Detail Page)
+- [x] Create Loading Message (Team Detail Page)
+- [ ] Parameter of Season issue, based on master page instead current date. (Team Detail Page/Player Chart Page)
 
 ## Use Cases
 * Alert
