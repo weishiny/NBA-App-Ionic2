@@ -46,7 +46,15 @@ export class NBATeamDetailPage implements OnInit {
         let nowYearlastTwoChar: string =  (parseInt(this.selectedYear, 10) + 1).toString().substr(2, 2); //ex: 16
         let season = nowYear + '-' + nowYearlastTwoChar;
         
-        this.GetTeamInfo(TeamIDParam, season).then(() => null).catch(this.handleError);                
+        let loader = this.loadingCtrl.create({
+            content: "Please wait..."            
+        });
+        loader.present();
+
+        this.GetTeamInfo(TeamIDParam, season).then(() => loader.dismiss())
+            .catch(error => {
+                loader.dismiss();
+            });                
     }
 
     onBack() {

@@ -39,7 +39,15 @@ export class NBAPlayerDetailPage implements OnInit {
         let playerID: string = this.selectedPlayerID;
         this.PlayerID = playerID;
         
-        this.GetPlayerRecord(playerID).then(() => null).catch(this.handleError);
+        let loader = this.loadingCtrl.create({
+            content: "Please wait..."            
+        });
+        loader.present();
+
+        this.GetPlayerRecord(playerID).then(() => loader.dismiss())
+            .catch(error => {
+                loader.dismiss();
+            });
     }
 
     onBack() {

@@ -131,7 +131,7 @@ export class NBAGameListPage implements OnInit{
                                 GameProcess = EachGameitem['GameDate'].replace(/\s*ET\s*/, '');
                                 break;
                             case 'live':
-                                GameProcess += EachGameitem['process']['Quarter'] + ' ';
+                                GameProcess = EachGameitem['process']['Quarter'] + ' ';
                                 GameProcess += EachGameitem['process']['Time'].replace(/\s+/, '');        
                                 break;
                             case 'over':
