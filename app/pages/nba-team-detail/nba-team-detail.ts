@@ -66,7 +66,8 @@ export class NBATeamDetailPage implements OnInit {
         this.navCtrl.push(NBAPlayerDetailPage, {
             PlayerID: PlayerBasicInfoStat['PlayerID'],
             TeamID: PlayerBasicInfoStat['TeamID'],
-            TeamColor: PlayerBasicInfoStat['TeamColor']             
+            TeamColor: PlayerBasicInfoStat['TeamColor'],
+            TeamYear: this.selectedYear             
         });
     }
 

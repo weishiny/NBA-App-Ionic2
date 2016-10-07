@@ -10,6 +10,7 @@ import { NBADataServices } from '../../services/nba-data-services/nba-data-servi
 export class PlayerChartComponent implements OnInit{
     @Input() BindingplayerID: string;
     @Input() Bindingcolor: string;
+    @Input() Bindingyear: string;
     
     GameLogChartLabels: string[] = ['Points', 'Assists', 'Rebounds', 'Blocks', 'Steals', 'Turnovers'];
     GameLogChartData: any[] = [{data: [0, 0, 0, 0, 0, 0], label: 'default'}]; //default value to avoid error 
@@ -24,18 +25,9 @@ export class PlayerChartComponent implements OnInit{
 
     }
 
-    ngOnInit() {        
-        /* 2016.1-2016.9 is 2015 season */
-        const currentDate = new Date()
-        const currentMonth = currentDate.getMonth() + 1
-        let currentYear: number;
-        if (currentMonth >= 10) {
-            currentYear = currentDate.getFullYear();
-        } else {
-            currentYear = currentDate.getFullYear() - 1;
-        }        
-        let nowYearlastTwoChar: string =  (currentYear + 1).toString().substr(2, 2); //ex: 16
-        let season: string = currentYear + '-' + nowYearlastTwoChar; 
+    ngOnInit() {                   
+        let nowYearlastTwoChar: string =  (parseInt(this.Bindingyear, 10) + 1).toString().substr(2, 2); //ex: 16
+        let season: string = this.Bindingyear + '-' + nowYearlastTwoChar; 
         this.GetNBAPlayerLog(this.BindingplayerID, season)
             .then((EachGameLog) => {
                 //Get newest 3 games record recently if there are more than 3 games

@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { AlertController, NavController } from 'ionic-angular';
+import { AlertController, NavController, LoadingController } from 'ionic-angular';
 import { NBATeamMap } from '../../services/nba-team-map/nba-team-map';
 import { NBADataServices } from '../../services/nba-data-services/nba-data-services';
 import { NBAPlayerDetailPage } from '../nba-player-detail/nba-player-detail';
@@ -10,27 +10,49 @@ import { NBAPlayerDetailPage } from '../nba-player-detail/nba-player-detail';
 export class NBAPlayerListPage implements OnInit {
     NBAPlayerList: any[] = [];
     NBAPlayerListLocal: any[] = [];
+    PlayerYear: string;
 
     constructor(private NBAteammap: NBATeamMap, private NBAdataservices: NBADataServices, 
-                private PlayeralertCtrl: AlertController, public navCtrl: NavController) {
+                private PlayeralertCtrl: AlertController, public navCtrl: NavController,
+                public loadingCtrl: LoadingController) {
 
     }
 
     ngOnInit() {
         /* 2016.1-2016.9 is 2015 season */
-        const currentDate = new Date()
-        const currentMonth = currentDate.getMonth() + 1
-        let currentYear: number;
-        if (currentMonth >= 10) {
-            currentYear = currentDate.getFullYear();
-        } else {
-            currentYear = currentDate.getFullYear() - 1;
-        }        
-        let nowYearlastTwoChar: string =  (currentYear + 1).toString().substr(2, 2); //ex: 16
-        let season: string = currentYear + '-' + nowYearlastTwoChar;        
-        return this.GetNBAPlayerList(season).then(() => null).catch(this.handleError); //initialize PlayerList
+        let nowLocalTime: Date = new Date();
+        let nowYear: string = (nowLocalTime.getFullYear()).toString();        
+        this.PlayerYear = nowYear;        
+        let nowYearlastTwoChar: string =  (parseInt(nowYear, 10) + 1).toString().substr(2, 2); //ex: 16
+        let season: string = nowYear + '-' + nowYearlastTwoChar;
+
+        let loader = this.loadingCtrl.create({
+            content: "Please wait..."            
+        });
+        loader.present();
+
+        return this.GetNBAPlayerList(season).then(() => loader.dismiss())
+            .catch(error => {
+                loader.dismiss();
+            }); //initialize PlayerList
     }
     
+    onDateChange() {
+        //PlayerYear is two way binding, so whenever the datepicker is changed, we just use PlayerYear
+        let nowYear: number = parseInt(this.PlayerYear, 10); 
+        let season: string = this.PlayerYear + '-' + (nowYear + 1).toString().substr(2, 2); //ex: 16
+        
+        let loader = this.loadingCtrl.create({
+            content: "Please wait..."            
+        });
+        loader.present();
+
+        this.GetNBAPlayerList(season).then(() => loader.dismiss())
+            .catch(error => {
+                loader.dismiss();
+            });
+    }
+
     getPlayerItem(event: any) {
         //Everytime we search for player, we need to get (initialize) the whole playerList,
         //Otherwise, when we have searched for some value and the list left some data, next time, 
@@ -54,7 +76,8 @@ export class NBAPlayerListPage implements OnInit {
         this.navCtrl.push(NBAPlayerDetailPage, {
             PlayerID: PlayerItem['PlayerID'],
             TeamID: PlayerItem['TeamID'],
-            TeamColor: PlayerItem['TeamColor']            
+            TeamColor: PlayerItem['TeamColor'],
+            TeamYear: this.PlayerYear            
         });
     }
 

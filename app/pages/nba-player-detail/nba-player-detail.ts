@@ -12,6 +12,7 @@ export class NBAPlayerDetailPage implements OnInit {
     selectedPlayerID: string;
     selectedTeamID: string;
     selectedTeamColor: string;
+    selectedYear: string;
     NBATeamMapData: any[];
     PtsRank: string;
     RebRank: string;
@@ -32,6 +33,7 @@ export class NBAPlayerDetailPage implements OnInit {
         //that the bar chart's background color will be changed according to the team's color.
         //Thus, we use the variable from parent page to get team color absolutely.
         this.selectedTeamColor = navParams.get('TeamColor');
+        this.selectedYear = navParams.get('TeamYear');        
         this.NBATeamMapData = NBAteammap.getNBATeamArrayData();
     }
 
@@ -92,8 +94,7 @@ export class NBAPlayerDetailPage implements OnInit {
             .catch(this.handleError);
     }
 
-    private handleError(error: any): Promise<any> {
-        alert(error);
+    private handleError(error: any): Promise<any> {        
         console.error('An error occurred', error);
         return Promise.reject(error.message || error);
     }

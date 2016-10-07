@@ -1,3 +1,10 @@
+.searchbar {
+    margin-right: 30px;
+}
+.playYear {    
+    font-weight: 200;
+    font-size: 70%;
+}
 .playerName {
     font-size: 16px !important;
     font-weight: bold;
@@ -14,4 +21,11 @@
 }
 .playeravartarHeight {
     min-height: 10% !important; //used for ion item's height, to overwrite ion-avartar's min-height which affect item's height    
+}
+.right-image {
+    position: absolute !important;
+    top: 7px !important;
+    right: 5px !important;
+    max-width: 60px !important;
+    max-height: 60px !important;        
 }
