@@ -15,7 +15,8 @@ the only difference between both is development language, i.e. this project use 
 - [x] Each Game's **undefined** issue of Game Process (Game List Page)
 - [x] Create Loading Message (Player Detail Page)
 - [x] Create Loading Message (Team Detail Page)
-- [ ] Parameter of Season issue, based on master page instead current date. (Team Detail Page/Player Chart Page)
+- [x] Parameter of Season issue based on master page instead current date (Team Detail Page)
+- [x] Parameter of Season issue based on master page instead current date (Player Chart Page)
 
 ## Use Cases
 * Alert
