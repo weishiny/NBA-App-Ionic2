@@ -128,7 +128,7 @@ export class NBAGameDetailPage implements OnInit {
                         GameProcess = '';
                         break;
                     case 'live':
-                        GameProcess += gameDetail['process']['Quarter'] + ' ';
+                        GameProcess = gameDetail['process']['Quarter'] + ' ';
                         GameProcess += gameDetail['process']['Time'].replace(/\s+/, '');        
                         break;
                     case 'over':
