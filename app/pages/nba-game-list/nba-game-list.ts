@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { Refresher, AlertController, NavController } from 'ionic-angular';
-import { DatePicker } from 'ionic-native';
+import { Refresher, AlertController, NavController, Platform } from 'ionic-angular';
+import { DatePicker, DatePickerOptions } from 'ionic-native';
 import { NBATeamDataType } from '../../base-data-type/nba-team-datatype';
 import { NBATeamMap } from '../../services/nba-team-map/nba-team-map';
 import { NBADataServices } from '../../services/nba-data-services/nba-data-services';
@@ -16,9 +16,10 @@ export class NBAGameListPage implements OnInit{
     gameCount: number;
     gameDate: string;        
     ChangedDate: string;
+    selectedYear: string;
 
     constructor(private NBAteammap: NBATeamMap, private NBAdataservices: NBADataServices, 
-                private GamealertCtrl: AlertController, public navCtrl: NavController ) {
+                private GamealertCtrl: AlertController, public navCtrl: NavController, public platform: Platform ) {
         this.NBATeamMapData = NBAteammap.getNBATeamArrayData();                       
     }
 
@@ -27,7 +28,8 @@ export class NBAGameListPage implements OnInit{
         //we use America/Los_Angeles time zone because L.A. game start at last in one day.        
         let SpecificDateTimeArray: any[] = this.GetSpecificTimeZoneFormat(nowLocalTime, -7);
         this.ChangedDate = SpecificDateTimeArray[0] + SpecificDateTimeArray[1] + SpecificDateTimeArray[2];
-        this.gameDate = SpecificDateTimeArray[0] + '-' + SpecificDateTimeArray[1] + '-' + SpecificDateTimeArray[2];      
+        this.gameDate = SpecificDateTimeArray[0] + '-' + SpecificDateTimeArray[1] + '-' + SpecificDateTimeArray[2];
+        this.selectedYear = SpecificDateTimeArray[0];      
         this.GetNBAGameList(this.ChangedDate).then(() => null).catch(this.handleError);         
     }
 
@@ -35,16 +37,28 @@ export class NBAGameListPage implements OnInit{
         this.GetNBAGameList(this.ChangedDate).then(() => refresher.complete()).catch(this.handleError);
     }
 
-    OpenDatePicker(): void {        
-        DatePicker.show({
-            date: new Date(),
-            mode: 'datetime',
-            androidTheme : 3
-        }).then(
+    OpenDatePicker(): void {
+        let options: DatePickerOptions;
+        if (this.platform.is('android')) {
+            options = {
+                date: new Date(),
+                mode: 'datetime',
+                androidTheme : 3
+            }
+        }
+        else {
+            options = {
+                date: new Date(),
+                mode: 'datetime'                
+            }
+        }
+        
+        DatePicker.show(options).then(
             date => {                
                 let SpecificDateTimeArray: any[] = this.GetSpecificTimeZoneFormat(date, -7);
                 this.ChangedDate = SpecificDateTimeArray[0] + SpecificDateTimeArray[1] + SpecificDateTimeArray[2];
                 this.gameDate = SpecificDateTimeArray[0] + '-' + SpecificDateTimeArray[1] + '-' + SpecificDateTimeArray[2];
+                this.selectedYear = SpecificDateTimeArray[0];
                 this.GetNBAGameList(this.ChangedDate).then(() => null).catch(this.handleError);
             },
             error => console.log('Error occurred while getting date: ', error)
@@ -53,7 +67,8 @@ export class NBAGameListPage implements OnInit{
 
     GameItemTapped(event, GameItem) {
         this.navCtrl.push(NBAGameDetailPage, {
-            GameItem: GameItem
+            GameItem: GameItem,
+            SelectedYear: this.selectedYear
         });
     }
 

@@ -9,6 +9,7 @@ import { NBADataServices } from '../../services/nba-data-services/nba-data-servi
 export class NBAGameDetailPage implements OnInit {
     NBATeamMapData: any[];
     selectedGame: {};
+    selectedYear: string;
     HomeAway: string;
     HomePlayerFigureArray: any[] = [];
     AwayPlayerFigureArray: any[] = [];
@@ -24,6 +25,7 @@ export class NBAGameDetailPage implements OnInit {
                 public loadingCtrl: LoadingController ) {
         this.NBATeamMapData = NBAteammap.getNBATeamArrayData();
         this.selectedGame = navParams.get('GameItem');
+        this.selectedYear = navParams.get('SelectedYear');
         console.log(this.selectedGame);
     }
 
@@ -59,7 +61,7 @@ export class NBAGameDetailPage implements OnInit {
     }
 
     private GetTeamStanding(nowYear: string, homeTeamID: string, awayTeamID: string): Promise<any> {
-        return this.NBAdataservices.GetTeamRank('2015')
+        return this.NBAdataservices.GetTeamRank(this.selectedYear)
             .then(TeamRank => {                                
                 let WestTeamRankArray: any[] = TeamRank['western']; //TeamRank is an object
                 let EastTeamRankArray: any[] = TeamRank['eastern']; //TeamRank is an object
